@@ -1,4 +1,5 @@
 from abc import abstractmethod
+from ObjectFile import GameObject, Platform, Humanoid, Zombie, Hero
 import pygame
 
 
@@ -93,6 +94,13 @@ class MenuState(AppState):
         pass
 
 
+class PauseState(AppState):
+
+    def __init__(self, text):
+        super().__init__()
+        self._text = text
+
+
 class GameState(AppState):
 
     def __init__(self):
@@ -103,10 +111,10 @@ class GameState(AppState):
 
     def process_event(self, event):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            self.get_app().set_state(MenuState('menu_background', 'Ты вернулся в меню!\nУра!\n(Не уходи)'))
+            self.get_app().set_state(PauseState('Пауза\nEnter - продолжить\nEsc - выйти в меню'))
 
     def loop(self, dt):
-        self.get_app().get_screen().fill((255, 128, 0))
+        self.get_app().get_screen().fill((0, 0, 0))
 
     def destroy(self):
         pass
