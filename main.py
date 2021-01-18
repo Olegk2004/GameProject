@@ -3,7 +3,7 @@ from ObjectFile import GameObject, Platform, Humanoid, Zombie, Hero
 import pygame
 
 
-class App:
+class App:  # приложение
 
     def __init__(self, display_size):
         self._state = None
@@ -15,18 +15,18 @@ class App:
         self._running = True
         self._clock = pygame.time.Clock()
 
-    def set_state(self, state):
+    def set_state(self, state):  # изменить состояние (меню, пауза, игра)
         self._state = state
         self._state.set_app(self)
         self._state.setup()
 
-    def get_screen(self):
+    def get_screen(self):  # получить сам экран изображения
         return self._screen
 
-    def get_display_size(self):
+    def get_display_size(self):  # получить размер экрана приложения
         return self._display_size
 
-    def run(self):
+    def run(self):  # основной процесс приложения
         while self._running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -39,30 +39,30 @@ class App:
         self._state.destroy()
 
 
-class AppState:
+class AppState:  # состояние приложения
 
     def __init__(self):
-        self._app = None
+        self._app = None  # приложение, к которому привязано
 
-    def set_app(self, app):
+    def set_app(self, app):  # изменить приложение, к которому привязано
         self._app = app
 
-    def get_app(self):
+    def get_app(self):  # получить приложение, к которому привязано
         return self._app
 
     @abstractmethod
-    def setup(self):
+    def setup(self):  # описание запуска состояния
         pass
 
     @abstractmethod
-    def process_event(self, event):
+    def process_event(self, event):  # описание реакций состояния на определённые действия пользователя
         pass
 
     @abstractmethod
-    def loop(self, dt):
+    def loop(self, dt):  # описание того, что происходит на экране, пока работает состояние (заливка, текст, анимация, не зависимые от действий)
         pass
 
-    @abstractmethod
+    @abstractmethod  # описание прекращения работы состояния
     def destroy(self):
         pass
 
@@ -71,14 +71,14 @@ class MenuState(AppState):
 
     def __init__(self, background_image, text):
         super().__init__()
-        self._bg_img = imgs[background_image]
-        self._text = text.split('\n')
+        self._bg_img = imgs[background_image]  # берём картинку фона из листа imgs
+        self._text = text.split('\n')  # текст меню
 
     def setup(self):
-        self._bg_img = pygame.transform.scale(self._bg_img, self.get_app().get_display_size())
+        self._bg_img = pygame.transform.scale(self._bg_img, self.get_app().get_display_size())  # ставим картинку на фон
 
     def process_event(self, event):
-        if event.type in (pygame.KEYDOWN, pygame.MOUSEBUTTONDOWN):
+        if event.type in (pygame.KEYDOWN, pygame.MOUSEBUTTONDOWN):  # если что-то нажато, запускаем игровой процесс
             self.get_app().set_state(GameState())
 
     def loop(self, dt):
@@ -94,14 +94,14 @@ class MenuState(AppState):
         pass
 
 
-class PauseState(AppState):
+class PauseState(AppState):  # состояние паузы
 
-    def __init__(self, text):
+    def __init__(self, text):  # подразумевается, что будет Пауза с прозрачным фоном, предлагающая выйти в меню или продолжить
         super().__init__()
         self._text = text
 
 
-class GameState(AppState):
+class GameState(AppState):  # состояние игры
 
     def __init__(self):
         super().__init__()
@@ -111,7 +111,7 @@ class GameState(AppState):
 
     def process_event(self, event):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            self.get_app().set_state(PauseState('Пауза\nEnter - продолжить\nEsc - выйти в меню'))
+            self.get_app().set_state(PauseState('Пауза\nEnter - продолжить\nEsc - выйти в меню'))  # запуск паузы при нажатии esc
 
     def loop(self, dt):
         self.get_app().get_screen().fill((0, 0, 0))
@@ -120,7 +120,7 @@ class GameState(AppState):
         pass
 
 
-def load_image(image_path, colorkey=None):
+def load_image(image_path, colorkey=None):  # функция для работы с картинками
     result = pygame.image.load(image_path)
     if colorkey is not None:
         if colorkey == -1:
@@ -131,7 +131,7 @@ def load_image(image_path, colorkey=None):
     return result
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':   # запуск самой игры
 
     app = App((640, 480))
 
