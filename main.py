@@ -129,7 +129,7 @@ while running:
             bullets.append(Bullet(x + width // 2, y + height // 2,
                                   5, (255, 0, 0), facing))
 
-    elif keys[pygame.K_LEFT] and x > 0 and not is_on_pause:
+    if keys[pygame.K_LEFT] and x > 0 and not is_on_pause:
         x -= speed
         left = True
         right = False
