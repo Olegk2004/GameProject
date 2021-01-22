@@ -77,6 +77,10 @@ def draw():
     pygame.display.update()
 
 
+def pause_effect():
+    pass
+
+
 platforms = []
 lev1 = [(150, 300), (450, 50)]
 q = 0
