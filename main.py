@@ -1,7 +1,8 @@
 import pygame
 
 pygame.init()
-win = pygame.display.set_mode((500, 500))
+DISPLAY_SIZE = (500, 500)
+win = pygame.display.set_mode((DISPLAY_SIZE[0], DISPLAY_SIZE[1]))
 
 pygame.display.set_caption("Cubes Game")  # заголовок к окну
 
@@ -36,6 +37,8 @@ right = False
 anim_count = 0
 last_move = "right"
 
+is_on_pause = False
+
 
 class Platform:
     def __init__(self, x, y):
@@ -59,15 +62,25 @@ class Bullet:
 def draw():
     global anim_count
     win.blit(bg, [0, 0])
+    if is_on_pause:
+        font = pygame.font.Font(None, 40)
+        text1 = font.render("Пауза", True, (0, 0, 0))
+        win.blit(text1, (DISPLAY_SIZE[0] // 2 - text1.get_width() // 2,
+                         DISPLAY_SIZE[1] // 2 - text1.get_height()))
+        font = pygame.font.Font(None, 20)
+        text2 = font.render("Esc - продолжить", True, (0, 0, 0))
+        win.blit(text2, (DISPLAY_SIZE[0] // 2 - text2.get_width() // 2,
+                         DISPLAY_SIZE[1] // 2 + text2.get_height()))
+
     if anim_count + 1 >= 30:
         anim_count = 0
 
     if left:
         win.blit(walk_left[anim_count // 5], [x, y])
-        anim_count += 1
+        anim_count += 1 * (not is_on_pause)
     elif right:
         win.blit(walk_right[anim_count // 5], [x, y])
-        anim_count += 1
+        anim_count += 1 * (not is_on_pause)
     else:
         win.blit(player_stand, [x, y])
 
@@ -77,31 +90,36 @@ def draw():
     pygame.display.update()
 
 
-def pause_effect():
-    pass
-
-
 platforms = []
 lev1 = [(150, 300), (450, 50)]
 q = 0
 running = True
 bullets = []
+
+
+def pause_manipulation():
+    global is_on_pause
+    is_on_pause = 1 - is_on_pause
+
+
 while running:
     clock.tick(30)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            pause_manipulation()
 
     for bullet in bullets:
-        if 0 < bullet.x < 500:
+        if 0 < bullet.x < DISPLAY_SIZE[0] and not is_on_pause:
             bullet.x += bullet.vel
-        else:
+        elif not is_on_pause:
             bullets.pop(bullets.index(bullet))
 
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_SPACE]:
+    if keys[pygame.K_SPACE] and not is_on_pause:
         if last_move == "right":
             facing = 1
         else:
@@ -111,24 +129,24 @@ while running:
             bullets.append(Bullet(x + width // 2, y + height // 2,
                                   5, (255, 0, 0), facing))
 
-    if keys[pygame.K_LEFT] and x > 0:
+    elif keys[pygame.K_LEFT] and x > 0 and not is_on_pause:
         x -= speed
         left = True
         right = False
         last_move = "left"
-    elif keys[pygame.K_RIGHT] and x < 500 - width:
+    elif keys[pygame.K_RIGHT] and x < DISPLAY_SIZE[0] - width and not is_on_pause:
         x += speed
         left = False
         right = True
         last_move = "right"
-    else:
+    elif not is_on_pause:
         right = False
         left = False
         anim_count = 0
     if not is_jump:
-        if keys[pygame.K_UP]:
+        if keys[pygame.K_UP] and not is_on_pause:
             is_jump = True
-    else:
+    elif not is_on_pause:
         if jump_count >= -10:
             if jump_count >= 0:
                 y -= (jump_count ** 2) / 3

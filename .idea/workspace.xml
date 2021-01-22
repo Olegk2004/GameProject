@@ -19,11 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Новая заготовка игры с персонажем (умеет ходить, прыгать, стрелять)">
+    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Удалены лишние файлы + заготовка под паузу">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/blocks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611347594696</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Удалены лишние файлы + заготовка под паузу">
+      <created>1611350295679</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611350295679</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,28 +114,29 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Новая заготовка игры с персонажем (умеет ходить, прыгать, стрелять)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Новая заготовка игры с персонажем (умеет ходить, прыгать, стрелять)" />
+    <MESSAGE value="Удалены лишние файлы + заготовка под паузу" />
+    <option name="LAST_COMMIT_MESSAGE" value="Удалены лишние файлы + заготовка под паузу" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1611350092928">
+    <state width="936" height="282" key="GridCell.Tab.0.bottom" timestamp="1611352458255">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611350092928" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1611350092928">
+    <state width="936" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611352458255" />
+    <state width="936" height="282" key="GridCell.Tab.0.center" timestamp="1611352458254">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611350092928" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1611350092928">
+    <state width="936" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611352458254" />
+    <state width="936" height="282" key="GridCell.Tab.0.left" timestamp="1611352458254">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611350092928" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1611350092928">
+    <state width="936" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611352458254" />
+    <state width="936" height="282" key="GridCell.Tab.0.right" timestamp="1611352458255">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611350092928" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611347659456">
+    <state width="936" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611352458255" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611350303587">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611347659456" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611350303587" />
   </component>
 </project>
