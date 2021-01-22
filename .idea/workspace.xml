@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Сделана пауза">
+    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Исправлена ошибка с анимацией хождения влево">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -105,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611352493072</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Исправлена ошибка с анимацией хождения влево">
+      <created>1611353232456</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611353232456</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,28 +130,29 @@
     <MESSAGE value="Новая заготовка игры с персонажем (умеет ходить, прыгать, стрелять)" />
     <MESSAGE value="Удалены лишние файлы + заготовка под паузу" />
     <MESSAGE value="Сделана пауза" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделана пауза" />
+    <MESSAGE value="Исправлена ошибка с анимацией хождения влево" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправлена ошибка с анимацией хождения влево" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1611353099834">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1611353246609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611353099834" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1611353099834">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611353246609" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1611353246609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611353099834" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1611353099834">
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611353246609" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1611353246609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611353099834" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1611353099834">
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611353246609" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1611353246609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611353099834" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611352498854">
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611353246609" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611353239708">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611352498854" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611353239708" />
   </component>
 </project>
