@@ -45,17 +45,17 @@ class Player(sprite.Sprite):
             if self.onGround:  # прыгаем, только когда можем оттолкнуться от земли
                 self.y_vel = -JUMP_POWER
 
-        if left:
+        if left and not right:
             self.x_vel = -MOVE_SPEED  # Лево = x- n
             self.image = WALKING_LEFT[self.anim_count // 5]
             self.anim_count += 1
 
-        if right:
+        elif right and not left:
             self.x_vel = MOVE_SPEED  # Право = x + n
             self.image = WALKING_RIGHT[self.anim_count // 5]
             self.anim_count += 1
 
-        if not (left or right):  # стоим, когда нет указаний идти
+        else:  # стоим, когда нет указаний идти
             self.x_vel = 0
             self.image = IDLE
             self.anim_count = 0
