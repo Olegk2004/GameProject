@@ -57,6 +57,7 @@ def main():
     entities = pygame.sprite.Group()  # Все объекты
     obstacles = []  # то, во что мы будем врезаться или опираться
     coins = []  # список для монет
+    monsters = pygame.sprite.Group()  # все монстры
     entities.add(hero)
     levels = [load_level(f'level{i + 1}.txt') for i in range(1)]
     current_level = 0  # уровень на данный момент
@@ -67,14 +68,19 @@ def main():
                 pf = Platform(x, y)
                 entities.add(pf)
                 obstacles.append(pf)
-            if col == "*":  # для шипов
+            elif col == "*":  # для шипов
                 bd = BlockDie(x, y)
                 entities.add(bd)
                 obstacles.append(bd)
-            if col == "m":  # для монет
+            elif col == "m":  # для монет
                 mn = Coin(x, y)
                 entities.add(mn)
                 coins.append(mn)
+            elif col == "e":  # для монстров
+                en = Monster(x, y)
+                entities.add(en)
+                obstacles.append(en)
+                monsters.add(en)
 
             x += TILE_WIDTH  # блоки платформы ставятся на ширине блоков
         y += TILE_HEIGHT  # то же самое и с высотой
@@ -82,22 +88,9 @@ def main():
 
     total_level_width = len(levels[current_level][0]) * TILE_WIDTH  # Высчитываем фактическую ширину уровня
     total_level_height = len(levels[current_level]) * TILE_HEIGHT  # высоту
-    monsters = pygame.sprite.Group()  # все монстры
     camera = Camera(camera_configure, total_level_width, total_level_height)
     timer = pygame.time.Clock()
     running = True
-    mn1 = Monster(190, 200)  # создание монстров и добавление их во всевозможные группы
-    mn2 = Monster(600, 700)
-    mn3 = Monster(130, 650)
-    mn4 = Monster(800, 400)
-    mn5 = Monster(800, 150)
-    entities.add(mn1, mn2, mn3, mn4, mn5)
-    obstacles.append(mn1)
-    obstacles.append(mn2)
-    obstacles.append(mn3)
-    obstacles.append(mn4)
-    obstacles.append(mn5)
-    monsters.add(mn1, mn2, mn3, mn4, mn5)
     while running:  # Основной цикл программы
         timer.tick(30)  # fps
         monsters.update(obstacles)
