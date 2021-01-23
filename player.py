@@ -9,12 +9,12 @@ MOVE_SPEED = 8
 WIDTH = 60
 HEIGHT = 71
 JUMP_POWER = 10
-GRAVITY = 0.75  # Сила, которая будет тянуть нас вниз
+GRAVITY = 0.98  # Сила, которая будет тянуть нас вниз
 WALKING_RIGHT = [image.load('hero_sprites/pygame_right_1.png'),
-                 image.load('hero_sprites/pygame_right_1.png'),
-                 image.load('hero_sprites/pygame_right_1.png'),
-                 image.load('hero_sprites/pygame_right_1.png'),
-                 image.load('hero_sprites/pygame_right_1.png')]
+                 image.load('hero_sprites/pygame_right_2.png'),
+                 image.load('hero_sprites/pygame_right_3.png'),
+                 image.load('hero_sprites/pygame_right_4.png'),
+                 image.load('hero_sprites/pygame_right_5.png')]
 WALKING_LEFT = [image.load('hero_sprites/pygame_left_1.png'),
                 image.load('hero_sprites/pygame_left_2.png'),
                 image.load('hero_sprites/pygame_left_3.png'),

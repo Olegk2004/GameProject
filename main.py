@@ -51,7 +51,7 @@ def main():
     pygame.display.set_caption("Trump - legend")  # Пишем в шапку
     bg = Surface((WIN_WIDTH, WIN_HEIGHT))  # Создание заднего фона
     bg.fill(Color(BACKGROUND_COLOR))  # Заливаем фон сплошным цветом
-    hero = Player(55, 55)  # создаем героя по (x,y) координатам
+    hero = Player(43, 69)  # создаем героя по (x,y) координатам
     left = right = False  # по умолчанию — стоим
     up = False
     entities = pygame.sprite.Group()  # Все объекты
