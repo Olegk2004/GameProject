@@ -6,10 +6,10 @@ MOVE_EXTRA_SPEED = 2.5  # Ускорение
 JUMP_EXTRA_POWER = 1  # дополнительная сила прыжка
 ANIMATION_SUPER_SPEED_DELAY = 0.05  # скорость смены кадров при ускорении
 MOVE_SPEED = 8
-WIDTH = 60
-HEIGHT = 71
+WIDTH = 43
+HEIGHT = 69
 JUMP_POWER = 10
-GRAVITY = 0.98  # Сила, которая будет тянуть нас вниз
+GRAVITY = 0.6  # Сила, которая будет тянуть нас вниз
 WALKING_RIGHT = [image.load('hero_sprites/pygame_right_1.png'),
                  image.load('hero_sprites/pygame_right_2.png'),
                  image.load('hero_sprites/pygame_right_3.png'),
@@ -21,7 +21,7 @@ WALKING_LEFT = [image.load('hero_sprites/pygame_left_1.png'),
                 image.load('hero_sprites/pygame_left_3.png'),
                 image.load('hero_sprites/pygame_left_4.png'),
                 image.load('hero_sprites/pygame_left_5.png'),
-                image.load('hero_sprites/pygame_left_6.png')]
+                image.load('hero_sprites/pygame_left_6.png'),]
 IDLE = image.load('hero_sprites/pygame_idle.png')
 
 
@@ -89,8 +89,7 @@ class Player(sprite.Sprite):
                     self.rect.top = p.rect.bottom  # то не движется вверх
                     self.y_vel = 0  # и энергия прыжка пропадает
 
-                if isinstance(p, blocks.BlockDie) or isinstance(p,
-                                                                monsters.Monster):  # если пересакаемый блок -
+                if isinstance(p, blocks.BlockDie) or isinstance(p, monsters.Monster):  # если пересакаемый блок -
                     self.die()  # - blocks.BlockDie или Monster - умираем
         for m in coins:
             if sprite.collide_rect(self, m):

@@ -10,8 +10,8 @@ WIN_WIDTH = 800  # Ширина создаваемого окна
 WIN_HEIGHT = 600  # Высота
 DISPLAY = (WIN_WIDTH, WIN_HEIGHT)  # Группируем ширину и высоту в одну переменную
 BACKGROUND_COLOR = (0, 0, 0)
-PLATFORM_WIDTH = 55
-PLATFORM_HEIGHT = 55
+TILE_WIDTH = 70
+TILE_HEIGHT = 70
 
 
 class Camera(object):  # класс из интернета для отображения уровня большего по размеру чем окно(эффект камеры)
@@ -51,7 +51,7 @@ def main():
     pygame.display.set_caption("Trump - legend")  # Пишем в шапку
     bg = Surface((WIN_WIDTH, WIN_HEIGHT))  # Создание заднего фона
     bg.fill(Color(BACKGROUND_COLOR))  # Заливаем фон сплошным цветом
-    hero = Player(43, 69)  # создаем героя по (x,y) координатам
+    hero = Player(70, 70)  # создаем героя по (x,y) координатам
     left = right = False  # по умолчанию — стоим
     up = False
     entities = pygame.sprite.Group()  # Все объекты
@@ -76,12 +76,12 @@ def main():
                 entities.add(mn)
                 coins.append(mn)
 
-            x += PLATFORM_WIDTH  # блоки платформы ставятся на ширине блоков
-        y += PLATFORM_HEIGHT  # то же самое и с высотой
+            x += TILE_WIDTH  # блоки платформы ставятся на ширине блоков
+        y += TILE_HEIGHT  # то же самое и с высотой
         x = 0  # на каждой новой строчке начинаем с нуля
 
-    total_level_width = len(levels[current_level][0]) * PLATFORM_WIDTH  # Высчитываем фактическую ширину уровня
-    total_level_height = len(levels[current_level]) * PLATFORM_HEIGHT  # высоту
+    total_level_width = len(levels[current_level][0]) * TILE_WIDTH  # Высчитываем фактическую ширину уровня
+    total_level_height = len(levels[current_level]) * TILE_HEIGHT  # высоту
     monsters = pygame.sprite.Group()  # все монстры
     camera = Camera(camera_configure, total_level_width, total_level_height)
     timer = pygame.time.Clock()
