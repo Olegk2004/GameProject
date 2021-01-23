@@ -5,11 +5,11 @@ import monsters
 MOVE_EXTRA_SPEED = 2.5  # Ускорение
 JUMP_EXTRA_POWER = 1  # дополнительная сила прыжка
 ANIMATION_SUPER_SPEED_DELAY = 0.05  # скорость смены кадров при ускорении
-MOVE_SPEED = 10
+MOVE_SPEED = 8
 WIDTH = 60
 HEIGHT = 71
 JUMP_POWER = 10
-GRAVITY = 0.35  # Сила, которая будет тянуть нас вниз
+GRAVITY = 0.75  # Сила, которая будет тянуть нас вниз
 WALKING_RIGHT = [image.load('hero_sprites/pygame_right_1.png'),
                  image.load('hero_sprites/pygame_right_1.png'),
                  image.load('hero_sprites/pygame_right_1.png'),
