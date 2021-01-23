@@ -50,6 +50,7 @@ def main():
     up = False
     entities = pygame.sprite.Group()  # Все объекты
     platforms = []  # то, во что мы будем врезаться или опираться
+    monets = []  # список для монет
     entities.add(hero)
     level = [
         "------------------------------------------------------",
@@ -82,6 +83,26 @@ def main():
         "-                                                    -",
         "-**********                           ----           -",
         "------------------------------------------------------"]
+    x = y = 0  # координаты
+    for row in level:  # вся строка
+        for col in row:  # каждый символ
+            if col == "-":  # знак для платформ
+                pf = Platform(x, y)
+                entities.add(pf)
+                platforms.append(pf)
+            if col == "*":  # для шипов
+                bd = BlockDie(x, y)
+                entities.add(bd)
+                platforms.append(bd)
+            if col == "m":  # для монет
+                mn = Monet(x, y)
+                entities.add(mn)
+                monets.append(mn)
+
+            x += PLATFORM_WIDTH  # блоки платформы ставятся на ширине блоков
+        y += PLATFORM_HEIGHT  # то же самое и с высотой
+        x = 0  # на каждой новой строчке начинаем с нуля
+
     total_level_width = len(level[0]) * PLATFORM_WIDTH  # Высчитываем фактическую ширину уровня
     total_level_height = len(level) * PLATFORM_HEIGHT  # высоту
     monsters = pygame.sprite.Group()  # все монстры
@@ -100,9 +121,8 @@ def main():
     platforms.append(mn4)
     platforms.append(mn5)
     monsters.add(mn1, mn2, mn3, mn4, mn5)
-    monets = []  # список для монет
     while running:  # Основной цикл программы
-        timer.tick(60)  # fps
+        timer.tick(30)  # fps
         monsters.update(platforms)
         for e in pygame.event.get():  # Обрабатываем события
             if e.type == QUIT:
@@ -121,25 +141,6 @@ def main():
             if e.type == KEYUP and e.key == K_LEFT:
                 left = False
         screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
-        x = y = 0  # координаты
-        for row in level:  # вся строка
-            for col in row:  # каждый символ
-                if col == "-":  # знак для платформ
-                    pf = Platform(x, y)
-                    entities.add(pf)
-                    platforms.append(pf)
-                if col == "*":  # для шипов
-                    bd = BlockDie(x, y)
-                    entities.add(bd)
-                    platforms.append(bd)
-                if col == "m":  # для монет
-                    mn = Monet(x, y)
-                    entities.add(mn)
-                    monets.append(mn)
-
-                x += PLATFORM_WIDTH  # блоки платформы ставятся на ширине блоков
-            y += PLATFORM_HEIGHT  # то же самое и с высотой
-            x = 0  # на каждой новой строчке начинаем с нуля
         hero.update(left, right, up, platforms, monets, level)  # передвижение
         camera.update(hero)
         for e in entities:
