@@ -3,15 +3,15 @@ from pygame import *
 from player import Player
 from blocks import Platform, BlockDie
 from monsters import Monster
-from monet import Monet
+from monet import Coin
 
 # Объявляем переменные
 WIN_WIDTH = 800  # Ширина создаваемого окна
-WIN_HEIGHT = 640  # Высота
+WIN_HEIGHT = 600  # Высота
 DISPLAY = (WIN_WIDTH, WIN_HEIGHT)  # Группируем ширину и высоту в одну переменную
 BACKGROUND_COLOR = (0, 0, 0)
-PLATFORM_WIDTH = 32
-PLATFORM_HEIGHT = 32
+PLATFORM_WIDTH = 55
+PLATFORM_HEIGHT = 55
 
 
 class Camera(object):  # класс из интернета для отображения уровня большего по размеру чем окно(эффект камеры)
@@ -27,22 +27,28 @@ class Camera(object):  # класс из интернета для отобра�
 
 
 def camera_configure(camera, target_rect):  # функция для обьекта класса камеры
-    l, t, _, _ = target_rect
-    _, _, w, h = camera
-    l, t = -l + WIN_WIDTH / 2, -t + WIN_HEIGHT / 2
+    left, top, _, _ = target_rect
+    _, _, width, height = camera
+    left, top = -left + WIN_WIDTH / 2, -top + WIN_HEIGHT / 2
 
-    l = min(0, l)  # Не движемся дальше левой границы
-    l = max(-(camera.width - WIN_WIDTH), l)  # Не движемся дальше правой границы
-    t = max(-(camera.height - WIN_HEIGHT), t)  # Не движемся дальше нижней границы
-    t = min(0, t)  # Не движемся дальше верхней границы
+    left = min(0, left)  # Не движемся дальше левой границы
+    left = max(-(camera.width - WIN_WIDTH), left)  # Не движемся дальше правой границы
+    top = max(-(camera.height - WIN_HEIGHT), top)  # Не движемся дальше нижней границы
+    top = min(0, top)  # Не движемся дальше верхней границы
 
-    return Rect(l, t, w, h)
+    return Rect(left, top, width, height)
+
+
+def load_level(filename):
+    filename = "levels/" + filename
+    with open(filename, 'r') as mapFile:
+        return [line.strip() for line in mapFile]
 
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode(DISPLAY)
-    pygame.display.set_caption("Tramp - legend")  # Пишем в шапку
+    pygame.display.set_caption("Trump - legend")  # Пишем в шапку
     bg = Surface((WIN_WIDTH, WIN_HEIGHT))  # Создание заднего фона
     bg.fill(Color(BACKGROUND_COLOR))  # Заливаем фон сплошным цветом
     hero = Player(55, 55)  # создаем героя по (x,y) координатам
@@ -50,41 +56,12 @@ def main():
     up = False
     entities = pygame.sprite.Group()  # Все объекты
     platforms = []  # то, во что мы будем врезаться или опираться
-    monets = []  # список для монет
+    coins = []  # список для монет
     entities.add(hero)
-    level = [
-        "------------------------------------------------------",
-        "-                                  m                 -",
-        "-                       --                  ---      -",
-        "-        *                                           -",
-        "-                          m                         -",
-        "-            --                        -----         -",
-        "--                  m                                -",
-        "-                                                    -",
-        "-        m          ----     ---                     -",
-        "-                                          ---       -",
-        "--                               -                   -",
-        "-            *        m                              -",
-        "-      m                     ---         -           -",
-        "-                                                    -",
-        "-               m                        *           -",
-        "-  *   ---                  *            ---         -",
-        "-                                                    -",
-        "-   -------         ----                             -",
-        "-                                    ***           ---",
-        "-           m             -  m                       -",
-        "---                         --                      --",
-        "-           ***                              ***     -",
-        "-                                                    -",
-        "-                        ---           ---           -",
-        "---    ---                     **                    -",
-        "-                                                  ---",
-        "-               ----------          ***              -",
-        "-                                                    -",
-        "-**********                           ----           -",
-        "------------------------------------------------------"]
+    levels = [load_level(f'level{i + 1}.txt') for i in range(1)]
+    current_level = 0  # уровень на данный момент
     x = y = 0  # координаты
-    for row in level:  # вся строка
+    for row in levels[current_level]:  # вся строка
         for col in row:  # каждый символ
             if col == "-":  # знак для платформ
                 pf = Platform(x, y)
@@ -95,16 +72,16 @@ def main():
                 entities.add(bd)
                 platforms.append(bd)
             if col == "m":  # для монет
-                mn = Monet(x, y)
+                mn = Coin(x, y)
                 entities.add(mn)
-                monets.append(mn)
+                coins.append(mn)
 
             x += PLATFORM_WIDTH  # блоки платформы ставятся на ширине блоков
         y += PLATFORM_HEIGHT  # то же самое и с высотой
         x = 0  # на каждой новой строчке начинаем с нуля
 
-    total_level_width = len(level[0]) * PLATFORM_WIDTH  # Высчитываем фактическую ширину уровня
-    total_level_height = len(level) * PLATFORM_HEIGHT  # высоту
+    total_level_width = len(levels[current_level][0]) * PLATFORM_WIDTH  # Высчитываем фактическую ширину уровня
+    total_level_height = len(levels[current_level]) * PLATFORM_HEIGHT  # высоту
     monsters = pygame.sprite.Group()  # все монстры
     camera = Camera(camera_configure, total_level_width, total_level_height)
     timer = pygame.time.Clock()
@@ -141,7 +118,7 @@ def main():
             if e.type == KEYUP and e.key == K_LEFT:
                 left = False
         screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
-        hero.update(left, right, up, platforms, monets, level)  # передвижение
+        hero.update(left, right, up, platforms, coins, levels[current_level])  # передвижение
         camera.update(hero)
         for e in entities:
             screen.blit(e.image, camera.apply(e))

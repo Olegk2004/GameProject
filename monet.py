@@ -1,11 +1,11 @@
 from pygame import *
 
-MONET_WIDTH = 35
-MONET_HEIGHT = 35
+COIN_WIDTH = 35
+COIN_HEIGHT = 35
 
 
-class Monet(sprite.Sprite):
+class Coin(sprite.Sprite):
     def __init__(self, x, y):
         sprite.Sprite.__init__(self)
         self.image = image.load("blocks_sprites/monet.png")
-        self.rect = Rect(x, y, MONET_WIDTH, MONET_HEIGHT)
+        self.rect = Rect(x, y, COIN_WIDTH, COIN_HEIGHT)
