@@ -19,9 +19,23 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Исправлена ошибка с анимацией хождения влево">
+    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Код приведён в порядок + добавлены описания">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platform.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_left_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_left_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_left_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_left_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_left_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_left_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_right_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_right_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_right_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_right_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_right_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygame_right_6.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611353232456</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Код приведён в порядок + добавлены описания">
+      <created>1611354828429</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1611354828429</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,34 +146,40 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Новая заготовка игры с персонажем (умеет ходить, прыгать, стрелять)" />
     <MESSAGE value="Удалены лишние файлы + заготовка под паузу" />
     <MESSAGE value="Сделана пауза" />
     <MESSAGE value="Исправлена ошибка с анимацией хождения влево" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправлена ошибка с анимацией хождения влево" />
+    <MESSAGE value="Код приведён в порядок + добавлены описания" />
+    <option name="LAST_COMMIT_MESSAGE" value="Код приведён в порядок + добавлены описания" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1611353246609">
+    <state x="1220" y="275" key="FileChooserDialogImpl" timestamp="1611394314503">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611353246609" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1611353246609">
+    <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1611394314503" />
+    <state width="1899" height="2" key="GridCell.Tab.0.bottom" timestamp="1611396719482">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611353246609" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1611353246609">
+    <state width="1899" height="2" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611396719482" />
+    <state width="1899" height="2" key="GridCell.Tab.0.center" timestamp="1611396719482">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611353246609" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1611353246609">
+    <state width="1899" height="2" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611396719482" />
+    <state width="1899" height="2" key="GridCell.Tab.0.left" timestamp="1611396719481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611353246609" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611353239708">
+    <state width="1899" height="2" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611396719481" />
+    <state width="1899" height="2" key="GridCell.Tab.0.right" timestamp="1611396719482">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611353239708" />
+    <state width="1899" height="2" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611396719482" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611354835153">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611354835153" />
   </component>
 </project>
