@@ -19,9 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Уменьшена сила прыжка, увеличена гравитация">
-      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
-    </list>
+    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Исправлена ошибка с анимацией хождения вправо" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -146,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611429455174</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Исправлена ошибка с анимацией хождения вправо">
+      <created>1611429925289</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1611429925289</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,29 +176,30 @@
     <MESSAGE value="Исправление ошибки со скоростью игры" />
     <MESSAGE value="Теперь уровни загружаются из текстовых файлов + подправлена структура кода" />
     <MESSAGE value="Уменьшена сила прыжка, увеличена гравитация" />
-    <option name="LAST_COMMIT_MESSAGE" value="Уменьшена сила прыжка, увеличена гравитация" />
+    <MESSAGE value="Исправлена ошибка с анимацией хождения вправо" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправлена ошибка с анимацией хождения вправо" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1220" y="275" key="FileChooserDialogImpl" timestamp="1611394314503">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1611394314503" />
-    <state width="1899" height="14" key="GridCell.Tab.0.bottom" timestamp="1611429588804">
+    <state width="1899" height="14" key="GridCell.Tab.0.bottom" timestamp="1611429893180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="14" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611429588804" />
-    <state width="1899" height="14" key="GridCell.Tab.0.center" timestamp="1611429588804">
+    <state width="1899" height="14" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611429893180" />
+    <state width="1899" height="14" key="GridCell.Tab.0.center" timestamp="1611429893180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="14" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611429588804" />
-    <state width="1899" height="14" key="GridCell.Tab.0.left" timestamp="1611429588804">
+    <state width="1899" height="14" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611429893180" />
+    <state width="1899" height="14" key="GridCell.Tab.0.left" timestamp="1611429893180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="14" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611429588804" />
-    <state width="1899" height="14" key="GridCell.Tab.0.right" timestamp="1611429588804">
+    <state width="1899" height="14" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611429893180" />
+    <state width="1899" height="14" key="GridCell.Tab.0.right" timestamp="1611429893180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="14" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611429588804" />
+    <state width="1899" height="14" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611429893180" />
     <state width="1899" height="108" key="GridCell.Tab.1.bottom" timestamp="1611416358676">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -210,10 +216,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="108" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611416358676" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611429459209">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611429930225">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611429459209" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611429930225" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

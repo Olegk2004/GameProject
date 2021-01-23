@@ -14,12 +14,14 @@ WALKING_RIGHT = [image.load('hero_sprites/pygame_right_1.png'),
                  image.load('hero_sprites/pygame_right_2.png'),
                  image.load('hero_sprites/pygame_right_3.png'),
                  image.load('hero_sprites/pygame_right_4.png'),
-                 image.load('hero_sprites/pygame_right_5.png')]
+                 image.load('hero_sprites/pygame_right_5.png'),
+                 image.load('hero_sprites/pygame_right_6.png')]
 WALKING_LEFT = [image.load('hero_sprites/pygame_left_1.png'),
                 image.load('hero_sprites/pygame_left_2.png'),
                 image.load('hero_sprites/pygame_left_3.png'),
                 image.load('hero_sprites/pygame_left_4.png'),
-                image.load('hero_sprites/pygame_left_5.png')]
+                image.load('hero_sprites/pygame_left_5.png'),
+                image.load('hero_sprites/pygame_left_6.png')]
 IDLE = image.load('hero_sprites/pygame_idle.png')
 
 
@@ -45,12 +47,12 @@ class Player(sprite.Sprite):
 
         if left:
             self.x_vel = -MOVE_SPEED  # Лево = x- n
-            self.image = WALKING_LEFT[self.anim_count // 6]
+            self.image = WALKING_LEFT[self.anim_count // 5]
             self.anim_count += 1
 
         if right:
             self.x_vel = MOVE_SPEED  # Право = x + n
-            self.image = WALKING_RIGHT[self.anim_count // 6]
+            self.image = WALKING_RIGHT[self.anim_count // 5]
             self.anim_count += 1
 
         if not (left or right):  # стоим, когда нет указаний идти
