@@ -55,7 +55,7 @@ def main():
     left = right = False  # по умолчанию — стоим
     up = False
     entities = pygame.sprite.Group()  # Все объекты
-    platforms = []  # то, во что мы будем врезаться или опираться
+    obstacles = []  # то, во что мы будем врезаться или опираться
     coins = []  # список для монет
     entities.add(hero)
     levels = [load_level(f'level{i + 1}.txt') for i in range(1)]
@@ -66,11 +66,11 @@ def main():
             if col == "-":  # знак для платформ
                 pf = Platform(x, y)
                 entities.add(pf)
-                platforms.append(pf)
+                obstacles.append(pf)
             if col == "*":  # для шипов
                 bd = BlockDie(x, y)
                 entities.add(bd)
-                platforms.append(bd)
+                obstacles.append(bd)
             if col == "m":  # для монет
                 mn = Coin(x, y)
                 entities.add(mn)
@@ -86,21 +86,21 @@ def main():
     camera = Camera(camera_configure, total_level_width, total_level_height)
     timer = pygame.time.Clock()
     running = True
-    mn1 = Monster(190, 200, 2, 3, 150, 15)  # создание монстров и добавление их во всевозможные группы
-    mn2 = Monster(600, 700, 2, 3, 150, 15)
-    mn3 = Monster(130, 650, 2, 3, 150, 15)
-    mn4 = Monster(800, 400, 2, 3, 150, 15)
-    mn5 = Monster(800, 150, 2, 3, 150, 15)
+    mn1 = Monster(190, 200)  # создание монстров и добавление их во всевозможные группы
+    mn2 = Monster(600, 700)
+    mn3 = Monster(130, 650)
+    mn4 = Monster(800, 400)
+    mn5 = Monster(800, 150)
     entities.add(mn1, mn2, mn3, mn4, mn5)
-    platforms.append(mn1)
-    platforms.append(mn2)
-    platforms.append(mn3)
-    platforms.append(mn4)
-    platforms.append(mn5)
+    obstacles.append(mn1)
+    obstacles.append(mn2)
+    obstacles.append(mn3)
+    obstacles.append(mn4)
+    obstacles.append(mn5)
     monsters.add(mn1, mn2, mn3, mn4, mn5)
     while running:  # Основной цикл программы
         timer.tick(30)  # fps
-        monsters.update(platforms)
+        monsters.update(obstacles)
         for e in pygame.event.get():  # Обрабатываем события
             if e.type == QUIT:
                 running = False
@@ -118,7 +118,7 @@ def main():
             if e.type == KEYUP and e.key == K_LEFT:
                 left = False
         screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
-        hero.update(left, right, up, platforms, coins, levels[current_level])  # передвижение
+        hero.update(left, right, up, obstacles, coins, levels[current_level])  # передвижение
         camera.update(hero)
         for e in entities:
             screen.blit(e.image, camera.apply(e))

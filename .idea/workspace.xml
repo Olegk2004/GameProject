@@ -19,10 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Картинки приведены в нормальное качество">
+    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Теперь враги могут поворачиваться в сторону, в которую летят">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks_sprites/monster.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/levels/level1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monsters.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611436642651</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Теперь враги могут поворачиваться в сторону, в которую летят">
+      <created>1611437903460</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1611437903460</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,7 +212,8 @@
     <MESSAGE value="Добавлены кадры анимации" />
     <MESSAGE value="Размеры объектов приведены к TILE" />
     <MESSAGE value="Картинки приведены в нормальное качество" />
-    <option name="LAST_COMMIT_MESSAGE" value="Картинки приведены в нормальное качество" />
+    <MESSAGE value="Теперь враги могут поворачиваться в сторону, в которую летят" />
+    <option name="LAST_COMMIT_MESSAGE" value="Теперь враги могут поворачиваться в сторону, в которую летят" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1170" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1611430955702">
@@ -217,22 +224,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1611394314503" />
-    <state width="1899" height="240" key="GridCell.Tab.0.bottom" timestamp="1611437680039">
+    <state width="1899" height="240" key="GridCell.Tab.0.bottom" timestamp="1611438389597">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611437680039" />
-    <state width="1899" height="240" key="GridCell.Tab.0.center" timestamp="1611437680036">
+    <state width="1899" height="240" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611438389597" />
+    <state width="1899" height="240" key="GridCell.Tab.0.center" timestamp="1611438389596">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611437680036" />
-    <state width="1899" height="240" key="GridCell.Tab.0.left" timestamp="1611437680036">
+    <state width="1899" height="240" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611438389596" />
+    <state width="1899" height="240" key="GridCell.Tab.0.left" timestamp="1611438389588">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611437680036" />
-    <state width="1899" height="240" key="GridCell.Tab.0.right" timestamp="1611437680039">
+    <state width="1899" height="240" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611438389588" />
+    <state width="1899" height="240" key="GridCell.Tab.0.right" timestamp="1611438389597">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611437680039" />
+    <state width="1899" height="240" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611438389597" />
     <state width="1899" height="108" key="GridCell.Tab.1.bottom" timestamp="1611437373610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -249,9 +256,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="108" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611437373610" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611436644522">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611437913572">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611436644522" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611437913572" />
   </component>
 </project>
