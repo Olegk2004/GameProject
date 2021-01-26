@@ -1,7 +1,7 @@
 import pygame
 from pygame import *
 from player import Player
-from blocks import Platform, BlockDie
+from blocks import Platform, BlockDie, Exit
 from monsters import Monster
 from monet import Coin
 
@@ -106,6 +106,9 @@ def main():
                 entities.add(en)
                 obstacles.append(en)
                 monsters.add(en)
+            elif col == "!":  # для выходов
+                ex = Exit(x, y)
+                entities.add(ex)
 
             x += TILE_WIDTH  # блоки платформы ставятся на ширине блоков
         y += TILE_HEIGHT  # то же самое и с высотой

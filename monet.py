@@ -2,7 +2,6 @@ from pygame import *
 
 
 ACTIVATED_IMAGE = image.load("blocks_sprites/monet.png")
-DEACTIVATED_IMAGE = image.load("blocks_sprites/empty_coin.png")
 
 
 class Coin(sprite.Sprite):
@@ -17,7 +16,7 @@ class Coin(sprite.Sprite):
         if flag:
             self.image = ACTIVATED_IMAGE
         else:
-            self.image = DEACTIVATED_IMAGE
+            self.kill()
 
     def is_activated(self):
         return self.can_be_taken

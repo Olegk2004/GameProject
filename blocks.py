@@ -15,3 +15,9 @@ class BlockDie(Platform):
     def __init__(self, x, y):
         Platform.__init__(self, x, y)
         self.image = image.load("blocks_sprites/block_die.png")
+
+
+class Exit(Platform):
+    def __init__(self, x, y):
+        Platform.__init__(self, x, y)
+        self.image = image.load("blocks_sprites/exit.png")
