@@ -57,21 +57,33 @@ def draw_pause(screen):  # рисуем паузу
                        WIN_HEIGHT // 2))
 
 
+def draw_score(screen, score):
+    score_font = pygame.font.Font(None, 30)
+    text = score_font.render(score, True, (0, 255, 0))
+    screen.blit(text, (5, 0))
+
+
 def main():
     pygame.init()
     screen = pygame.display.set_mode(DISPLAY)
     pygame.display.set_caption("Trump - legend")  # Пишем в шапку
+
     bg = Surface((WIN_WIDTH, WIN_HEIGHT))  # Создание заднего фона
     bg.fill(Color(BACKGROUND_COLOR))  # Заливаем фон сплошным цветом
+
     hero = Player(70, 70)  # создаем героя по (x,y) координатам
+
     left = right = False  # по умолчанию — стоим
     up = False
     is_on_pause = False  # проверка на паузу
+
     entities = pygame.sprite.Group()  # Все объекты
     obstacles = []  # то, во что мы будем врезаться или опираться
     coins = []  # список для монет
     monsters = pygame.sprite.Group()  # все монстры
+
     entities.add(hero)
+
     levels = [load_level(f'level{i + 1}.txt') for i in range(1)]
     current_level = 0  # уровень на данный момент
     x = y = 0  # координаты
@@ -101,12 +113,15 @@ def main():
 
     total_level_width = len(levels[current_level][0]) * TILE_WIDTH  # Высчитываем фактическую ширину уровня
     total_level_height = len(levels[current_level]) * TILE_HEIGHT  # высоту
+
     camera = Camera(camera_configure, total_level_width, total_level_height)
     timer = pygame.time.Clock()
+
     running = True
     while running:  # Основной цикл программы
         timer.tick(30)  # fps
         monsters.update(obstacles)
+
         for e in pygame.event.get():  # Обрабатываем события
             if e.type == QUIT:
                 running = False
@@ -119,6 +134,7 @@ def main():
                 left = True
             if e.type == KEYDOWN and e.key == K_RIGHT:
                 right = True
+
             if e.type == KEYUP and e.key == K_RIGHT:
                 right = False
             if e.type == KEYUP and e.key == K_LEFT:
@@ -138,6 +154,9 @@ def main():
             screen.blit(e.image, camera.apply(e))
         if is_on_pause:
             draw_pause(screen)
+
+        draw_score(screen, str(hero.scores))
+
         pygame.display.update()  # обновление и вывод всех изменений на экран
 
     pygame.quit()

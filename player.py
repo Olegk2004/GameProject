@@ -2,12 +2,7 @@ from pygame import *
 import blocks
 import monsters
 
-MOVE_EXTRA_SPEED = 2.5  # Ускорение
-JUMP_EXTRA_POWER = 1  # дополнительная сила прыжка
-ANIMATION_SUPER_SPEED_DELAY = 0.05  # скорость смены кадров при ускорении
 MOVE_SPEED = 8
-WIDTH = 60
-HEIGHT = 70
 JUMP_POWER = 10
 GRAVITY = 0.75  # Сила, которая будет тянуть нас вниз
 WALKING_RIGHT = [image.load('hero_sprites/pygame_right_1.png'),
@@ -21,7 +16,7 @@ WALKING_LEFT = [image.load('hero_sprites/pygame_left_1.png'),
                 image.load('hero_sprites/pygame_left_3.png'),
                 image.load('hero_sprites/pygame_left_4.png'),
                 image.load('hero_sprites/pygame_left_5.png'),
-                image.load('hero_sprites/pygame_left_6.png'),]
+                image.load('hero_sprites/pygame_left_6.png')]
 IDLE = image.load('hero_sprites/pygame_idle.png')
 
 
@@ -32,10 +27,10 @@ class Player(sprite.Sprite):
         self.startX = x  # Начальная позиция Х, пригодится когда будем переигрывать уровень
         self.startY = y
         self.image = IDLE
-        self.rect = Rect(x, y, WIDTH, HEIGHT)  # прямоугольный объект
+        self.rect = Rect(x, y, self.image.get_width(), self.image.get_height())  # прямоугольный объект
         self.y_vel = 0  # скорость вертикального перемещения
         self.onGround = False  # На земле ли я?
-        self.anim_count = 0  # переменная какой картинку в данный момент времени всавлять
+        self.anim_count = 0  # переменная какой картинку в данный момент времени вставлять
         self.scores = 0
 
     def update(self, left, right, up, platforms, coins, level):
@@ -90,15 +85,19 @@ class Player(sprite.Sprite):
                     self.y_vel = 0  # и энергия прыжка пропадает
 
                 if isinstance(p, blocks.BlockDie) or isinstance(p, monsters.Monster):  # если пересакаемый блок -
-                    self.die()  # - blocks.BlockDie или Monster - умираем
-        for m in coins:
-            if sprite.collide_rect(self, m):
-                self.scores += 1
-                m.kill()
+                    self.die(coins)  # - blocks.BlockDie или Monster - умираем
 
-    def die(self):
+        for monet in coins:
+            if sprite.collide_rect(self, monet) and monet.is_activated():
+                self.scores += 100
+                monet.set_activated(False)  # убираем монеты
+
+    def die(self, coins):
         time.wait(500)
         self.teleporting(self.startX, self.startY)  # перемещаемся в начальные координаты
+        self.scores = 0
+        for monet in coins:  # монеты возвращаются на место
+            monet.set_activated(True)
 
     def teleporting(self, go_x, go_y):
         self.rect.x = go_x

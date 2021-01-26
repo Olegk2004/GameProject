@@ -1,11 +1,23 @@
 from pygame import *
 
-COIN_WIDTH = 35
-COIN_HEIGHT = 35
+
+ACTIVATED_IMAGE = image.load("blocks_sprites/monet.png")
+DEACTIVATED_IMAGE = image.load("blocks_sprites/empty_coin.png")
 
 
 class Coin(sprite.Sprite):
     def __init__(self, x, y):
         sprite.Sprite.__init__(self)
-        self.image = image.load("blocks_sprites/monet.png")
-        self.rect = Rect(x, y, COIN_WIDTH, COIN_HEIGHT)
+        self.image = ACTIVATED_IMAGE
+        self.rect = Rect(x, y, self.image.get_width(), self.image.get_height())
+        self.can_be_taken = True
+
+    def set_activated(self, flag):
+        self.can_be_taken = flag
+        if flag:
+            self.image = ACTIVATED_IMAGE
+        else:
+            self.image = DEACTIVATED_IMAGE
+
+    def is_activated(self):
+        return self.can_be_taken

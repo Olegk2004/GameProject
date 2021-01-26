@@ -19,10 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Исправлен баг с ускорением анимации при одновременном нажатии стрелок &quot;влево&quot; и &quot;вправо&quot;">
+    <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Добавлена пауза, добавлен метод остановки монстров">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks_sprites/monster0.png" beforeDir="false" afterPath="$PROJECT_DIR$/blocks_sprites/monster0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks_sprites/monster1.png" beforeDir="false" afterPath="$PROJECT_DIR$/blocks_sprites/monster1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monet.py" beforeDir="false" afterPath="$PROJECT_DIR$/monet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monsters.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
     </list>
@@ -206,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611439924096</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Добавлена пауза, добавлен метод остановки монстров">
+      <created>1611693437858</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1611693437858</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -239,7 +248,8 @@
     <MESSAGE value="Теперь враги летят по всей предоставляемой им территории (горизонту)" />
     <MESSAGE value="Теперь враги добавляются также через текстовый фаил" />
     <MESSAGE value="Исправлен баг с ускорением анимации при одновременном нажатии стрелок &quot;влево&quot; и &quot;вправо&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправлен баг с ускорением анимации при одновременном нажатии стрелок &quot;влево&quot; и &quot;вправо&quot;" />
+    <MESSAGE value="Добавлена пауза, добавлен метод остановки монстров" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлена пауза, добавлен метод остановки монстров" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1170" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1611430955702">
@@ -250,22 +260,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1611394314503" />
-    <state width="1899" height="240" key="GridCell.Tab.0.bottom" timestamp="1611693378400">
+    <state width="1899" height="240" key="GridCell.Tab.0.bottom" timestamp="1611696035389">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611693378400" />
-    <state width="1899" height="240" key="GridCell.Tab.0.center" timestamp="1611693378399">
+    <state width="1899" height="240" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611696035389" />
+    <state width="1899" height="240" key="GridCell.Tab.0.center" timestamp="1611696035389">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611693378399" />
-    <state width="1899" height="240" key="GridCell.Tab.0.left" timestamp="1611693378399">
+    <state width="1899" height="240" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611696035389" />
+    <state width="1899" height="240" key="GridCell.Tab.0.left" timestamp="1611696035389">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611693378399" />
-    <state width="1899" height="240" key="GridCell.Tab.0.right" timestamp="1611693378399">
+    <state width="1899" height="240" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611696035389" />
+    <state width="1899" height="240" key="GridCell.Tab.0.right" timestamp="1611696035389">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611693378399" />
+    <state width="1899" height="240" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611696035389" />
     <state width="1899" height="108" key="GridCell.Tab.1.bottom" timestamp="1611437373610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -282,9 +292,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="108" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611437373610" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611439930954">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611693443285">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611439930954" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611693443285" />
   </component>
 </project>

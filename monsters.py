@@ -1,9 +1,9 @@
 from pygame import *
 
-MONSTER_WIDTH = 70
-MONSTER_HEIGHT = 70
+
 MONSTER_SPEED = 2
-MONSTER_COLOR = "#FF00FF"
+LEFT_IMAGE = image.load('blocks_sprites/monster0.png')
+RIGHT_IMAGE = image.load('blocks_sprites/monster1.png')
 
 
 class Monster(sprite.Sprite):
@@ -11,10 +11,9 @@ class Monster(sprite.Sprite):
         sprite.Sprite.__init__(self)
         self.reached_final_destination = False  # флаг для выбора изображения (т.е. в какую сторону летит)
         self.can_move = True
-        self.left_image = image.load('blocks_sprites/monster0.png')
-        self.right_image = image.load('blocks_sprites/monster1.png')
-        self.image = self.left_image
-        self.rect = Rect(x, y, MONSTER_WIDTH, MONSTER_HEIGHT)
+
+        self.image = LEFT_IMAGE
+        self.rect = Rect(x, y, self.image.get_width(), self.image.get_height())
         self.startX = x  # начальные координаты
         self.startY = y
         self.maxLengthUp = max_length_up  # максимальное расстояние, которое может пройти в одну сторону, вертикаль
@@ -24,9 +23,9 @@ class Monster(sprite.Sprite):
     def update(self, obstacles):  # по принципу героя
         if self.can_move:
             if self.reached_final_destination:
-                self.image = self.left_image
+                self.image = LEFT_IMAGE
             else:
-                self.image = self.right_image
+                self.image = RIGHT_IMAGE
 
             self.rect.y += self.y_vel
             self.rect.x += self.x_vel
