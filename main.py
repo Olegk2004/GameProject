@@ -14,7 +14,7 @@ TILE_WIDTH = 70
 TILE_HEIGHT = 70
 
 
-class Camera(object):  # класс из интернета для отображения уровня большего по размеру чем окно(эффект камеры)
+class Camera(object):  # класс для отображения уровня большего по размеру чем окно(эффект камеры)
     def __init__(self, camera_func, width, height):
         self.camera_func = camera_func
         self.state = Rect(0, 0, width, height)
@@ -39,10 +39,22 @@ def camera_configure(camera, target_rect):  # функция для обьект
     return Rect(left, top, width, height)
 
 
-def load_level(filename):
+def load_level(filename):  # загрузка уровня
     filename = "levels/" + filename
     with open(filename, 'r') as mapFile:
         return [line.strip() for line in mapFile]
+
+
+def draw_pause(screen):  # рисуем паузу
+    pause_font = pygame.font.Font(None, 50)
+    text = pause_font.render("Пауза", True, (255, 255, 255))
+    screen.blit(text, (WIN_WIDTH // 2 - text.get_width() // 2,
+                       WIN_HEIGHT // 2 - text.get_width() // 2))
+
+    pause_font = pygame.font.Font(None, 30)
+    text = pause_font.render("Esc - продолжить", True, (255, 255, 255))
+    screen.blit(text, (WIN_WIDTH // 2 - text.get_width() // 2,
+                       WIN_HEIGHT // 2))
 
 
 def main():
@@ -54,6 +66,7 @@ def main():
     hero = Player(70, 70)  # создаем героя по (x,y) координатам
     left = right = False  # по умолчанию — стоим
     up = False
+    is_on_pause = False  # проверка на паузу
     entities = pygame.sprite.Group()  # Все объекты
     obstacles = []  # то, во что мы будем врезаться или опираться
     coins = []  # список для монет
@@ -101,20 +114,30 @@ def main():
                 up = True
             if e.type == KEYUP and e.key == K_UP:
                 up = False
+
             if e.type == KEYDOWN and e.key == K_LEFT:
                 left = True
             if e.type == KEYDOWN and e.key == K_RIGHT:
                 right = True
-
             if e.type == KEYUP and e.key == K_RIGHT:
                 right = False
             if e.type == KEYUP and e.key == K_LEFT:
                 left = False
+
+            if e.type == KEYDOWN and e.key == K_ESCAPE:  # Esc - управляющая клавиша паузы
+                is_on_pause = 1 - is_on_pause
+                for obj in obstacles:  # останавливаем всех монстров в зависимости от состояния
+                    if obj.__class__ == Monster:
+                        obj.stop(is_on_pause)
+
         screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
-        hero.update(left, right, up, obstacles, coins, levels[current_level])  # передвижение
-        camera.update(hero)
+        if not is_on_pause:
+            hero.update(left, right, up, obstacles, coins, levels[current_level])  # передвижение
+            camera.update(hero)
         for e in entities:
             screen.blit(e.image, camera.apply(e))
+        if is_on_pause:
+            draw_pause(screen)
         pygame.display.update()  # обновление и вывод всех изменений на экран
 
     pygame.quit()

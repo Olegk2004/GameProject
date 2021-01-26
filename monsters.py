@@ -2,13 +2,15 @@ from pygame import *
 
 MONSTER_WIDTH = 70
 MONSTER_HEIGHT = 70
-MONSTER_COLOR = "#2110FF"
+MONSTER_SPEED = 2
+MONSTER_COLOR = "#FF00FF"
 
 
 class Monster(sprite.Sprite):
-    def __init__(self, x, y, left_vel=2, up_vel=3, max_length_up=15):
+    def __init__(self, x, y, left_vel=MONSTER_SPEED, up_vel=3, max_length_up=15):
         sprite.Sprite.__init__(self)
         self.reached_final_destination = False  # флаг для выбора изображения (т.е. в какую сторону летит)
+        self.can_move = True
         self.left_image = image.load('blocks_sprites/monster0.png')
         self.right_image = image.load('blocks_sprites/monster1.png')
         self.image = self.left_image
@@ -20,19 +22,19 @@ class Monster(sprite.Sprite):
         self.y_vel = up_vel  # скорость движения по вертикали, 0 - не двигается
 
     def update(self, obstacles):  # по принципу героя
+        if self.can_move:
+            if self.reached_final_destination:
+                self.image = self.left_image
+            else:
+                self.image = self.right_image
 
-        if self.reached_final_destination:
-            self.image = self.left_image
-        else:
-            self.image = self.right_image
+            self.rect.y += self.y_vel
+            self.rect.x += self.x_vel
 
-        self.rect.y += self.y_vel
-        self.rect.x += self.x_vel
+            self.collide(obstacles)
 
-        self.collide(obstacles)
-
-        if abs(self.startY - self.rect.y) > self.maxLengthUp:
-            self.y_vel = -self.y_vel  # если прошли максимальное растояние, то идеи в обратную сторону, вертикаль
+            if abs(self.startY - self.rect.y) > self.maxLengthUp:
+                self.y_vel = -self.y_vel  # если прошли максимальное растояние, то идеи в обратную сторону, вертикаль
 
     def collide(self, obstacles):
         for obj in obstacles:
@@ -40,3 +42,6 @@ class Monster(sprite.Sprite):
                 self.x_vel = -self.x_vel  # то поворачиваем в обратную сторону
                 self.y_vel = -self.y_vel
                 self.reached_final_destination = 1 - self.reached_final_destination
+
+    def stop(self, is_on_pause):
+        self.can_move = 1 - is_on_pause

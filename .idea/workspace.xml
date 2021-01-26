@@ -20,6 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1c15759-d20e-4acf-a769-06f80fb71852" name="Default Changelist" comment="Исправлен баг с ускорением анимации при одновременном нажатии стрелок &quot;влево&quot; и &quot;вправо&quot;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monsters.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -246,22 +250,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1611394314503" />
-    <state width="1899" height="240" key="GridCell.Tab.0.bottom" timestamp="1611440210599">
+    <state width="1899" height="240" key="GridCell.Tab.0.bottom" timestamp="1611693378400">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611440210599" />
-    <state width="1899" height="240" key="GridCell.Tab.0.center" timestamp="1611440210599">
+    <state width="1899" height="240" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1611693378400" />
+    <state width="1899" height="240" key="GridCell.Tab.0.center" timestamp="1611693378399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611440210599" />
-    <state width="1899" height="240" key="GridCell.Tab.0.left" timestamp="1611440210599">
+    <state width="1899" height="240" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1611693378399" />
+    <state width="1899" height="240" key="GridCell.Tab.0.left" timestamp="1611693378399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611440210599" />
-    <state width="1899" height="240" key="GridCell.Tab.0.right" timestamp="1611440210599">
+    <state width="1899" height="240" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1611693378399" />
+    <state width="1899" height="240" key="GridCell.Tab.0.right" timestamp="1611693378399">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="240" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611440210599" />
+    <state width="1899" height="240" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1611693378399" />
     <state width="1899" height="108" key="GridCell.Tab.1.bottom" timestamp="1611437373610">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
