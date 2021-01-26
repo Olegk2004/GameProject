@@ -3,7 +3,7 @@ import blocks
 import monsters
 
 MOVE_SPEED = 8
-JUMP_POWER = 10
+JUMP_POWER = 14
 GRAVITY = 0.75  # Сила, которая будет тянуть нас вниз
 WALKING_RIGHT = [image.load('hero_sprites/pygame_right_1.png'),
                  image.load('hero_sprites/pygame_right_2.png'),
