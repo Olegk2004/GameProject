@@ -18,7 +18,6 @@ class Monster(sprite.Sprite):
         self.startY = y
         self.maxLengthUp = max_length_up  # максимальное расстояние, которое может пройти в одну сторону, вертикаль
         self.x_vel = left_vel  # скорость передвижения по горизонтали, 0 - стоит на месте
-        self.y_vel = up_vel  # скорость движения по вертикали, 0 - не двигается
 
     def update(self, obstacles):  # по принципу героя
         if self.can_move:
@@ -27,7 +26,6 @@ class Monster(sprite.Sprite):
             else:
                 self.image = RIGHT_IMAGE
 
-            self.rect.y += self.y_vel
             self.rect.x += self.x_vel
 
             self.collide(obstacles)
@@ -39,7 +37,6 @@ class Monster(sprite.Sprite):
         for obj in obstacles:
             if sprite.collide_rect(self, obj) and self != obj:  # если с чем-то или кем-то столкнулись
                 self.x_vel = -self.x_vel  # то поворачиваем в обратную сторону
-                self.y_vel = -self.y_vel
                 self.reached_final_destination = 1 - self.reached_final_destination
 
     def stop(self, is_on_pause):

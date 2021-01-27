@@ -12,6 +12,7 @@ DISPLAY = (WIN_WIDTH, WIN_HEIGHT)  # Группируем ширину и выс
 BACKGROUND_COLOR = (0, 0, 0)
 TILE_WIDTH = 70
 TILE_HEIGHT = 70
+TOTAL_LEVELS = 2  # Всего уровней
 
 
 class Camera(object):  # класс для отображения уровня большего по размеру чем окно(эффект камеры)
@@ -59,7 +60,7 @@ def draw_pause(screen):  # рисуем паузу
 
 def draw_score(screen, score):
     score_font = pygame.font.Font(None, 30)
-    text = score_font.render(score, True, (0, 255, 0))
+    text = score_font.render("Очки: " + score, True, (0, 255, 0))
     screen.blit(text, (5, 0))
 
 
@@ -71,98 +72,108 @@ def main():
     bg = Surface((WIN_WIDTH, WIN_HEIGHT))  # Создание заднего фона
     bg.fill(Color(BACKGROUND_COLOR))  # Заливаем фон сплошным цветом
 
-    hero = Player(70, 70)  # создаем героя по (x,y) координатам
+    current_level = -1  # уровень на данный момент (!!!)
 
-    left = right = False  # по умолчанию — стоим
-    up = False
-    is_on_pause = False  # проверка на паузу
+    while current_level < TOTAL_LEVELS - 1:
 
-    entities = pygame.sprite.Group()  # Все объекты
-    obstacles = []  # то, во что мы будем врезаться или опираться
-    coins = []  # список для монет
-    monsters = pygame.sprite.Group()  # все монстры
+        current_level += 1
 
-    entities.add(hero)
+        hero = Player(70, 70)  # создаем героя по (x,y) координатам
 
-    levels = [load_level(f'level{i + 1}.txt') for i in range(1)]
-    current_level = 0  # уровень на данный момент
-    x = y = 0  # координаты
-    for row in levels[current_level]:  # вся строка
-        for col in row:  # каждый символ
-            if col == "-":  # знак для платформ
-                pf = Platform(x, y)
-                entities.add(pf)
-                obstacles.append(pf)
-            elif col == "*":  # для шипов
-                bd = BlockDie(x, y)
-                entities.add(bd)
-                obstacles.append(bd)
-            elif col == "m":  # для монет
-                mn = Coin(x, y)
-                entities.add(mn)
-                coins.append(mn)
-            elif col == "e":  # для монстров
-                en = Monster(x, y)
-                entities.add(en)
-                obstacles.append(en)
-                monsters.add(en)
-            elif col == "!":  # для выходов
-                ex = Exit(x, y)
-                entities.add(ex)
+        left = right = False  # по умолчанию — стоим
+        up = False
+        is_on_pause = False  # проверка на паузу
 
-            x += TILE_WIDTH  # блоки платформы ставятся на ширине блоков
-        y += TILE_HEIGHT  # то же самое и с высотой
-        x = 0  # на каждой новой строчке начинаем с нуля
+        entities = pygame.sprite.Group()  # Все объекты
+        obstacles = []  # то, во что мы будем врезаться или опираться
+        coins = []  # список для монет
+        exits = []  # список для выходов
+        monsters = pygame.sprite.Group()  # все монстры
 
-    total_level_width = len(levels[current_level][0]) * TILE_WIDTH  # Высчитываем фактическую ширину уровня
-    total_level_height = len(levels[current_level]) * TILE_HEIGHT  # высоту
+        entities.add(hero)
 
-    camera = Camera(camera_configure, total_level_width, total_level_height)
-    timer = pygame.time.Clock()
+        levels = [load_level(f'level{i + 1}.txt') for i in range(TOTAL_LEVELS)]
 
-    running = True
-    while running:  # Основной цикл программы
-        timer.tick(30)  # fps
-        monsters.update(obstacles)
+        x = y = 0  # координаты
+        for row in levels[current_level]:  # вся строка
+            for col in row:  # каждый символ
+                if col == "-":  # знак для платформ
+                    pf = Platform(x, y)
+                    entities.add(pf)
+                    obstacles.append(pf)
+                elif col == "*":  # для шипов
+                    bd = BlockDie(x, y)
+                    entities.add(bd)
+                    obstacles.append(bd)
+                elif col == "m":  # для монет
+                    mn = Coin(x, y)
+                    entities.add(mn)
+                    coins.append(mn)
+                elif col == "e":  # для монстров
+                    en = Monster(x, y)
+                    entities.add(en)
+                    obstacles.append(en)
+                    monsters.add(en)
+                elif col == "!":  # для выходов
+                    ex = Exit(x, y)
+                    entities.add(ex)
+                    exits.append(ex)
 
-        for e in pygame.event.get():  # Обрабатываем события
-            if e.type == QUIT:
+                x += TILE_WIDTH  # блоки платформы ставятся на ширине блоков
+            y += TILE_HEIGHT  # то же самое и с высотой
+            x = 0  # на каждой новой строчке начинаем с нуля
+
+        total_level_width = len(levels[current_level][0]) * TILE_WIDTH  # Высчитываем фактическую ширину уровня
+        total_level_height = len(levels[current_level]) * TILE_HEIGHT  # высоту
+
+        camera = Camera(camera_configure, total_level_width, total_level_height)
+        timer = pygame.time.Clock()
+
+        running = True
+        while running:  # Основной цикл программы
+            timer.tick(30)  # fps
+            monsters.update(obstacles)
+
+            for e in pygame.event.get():  # Обрабатываем события
+                if e.type == QUIT:
+                    running = False
+                    pygame.quit()
+                if e.type == KEYDOWN and e.key == K_UP:
+                    up = True
+                if e.type == KEYUP and e.key == K_UP:
+                    up = False
+
+                if e.type == KEYDOWN and e.key == K_LEFT:
+                    left = True
+                if e.type == KEYDOWN and e.key == K_RIGHT:
+                    right = True
+
+                if e.type == KEYUP and e.key == K_RIGHT:
+                    right = False
+                if e.type == KEYUP and e.key == K_LEFT:
+                    left = False
+
+                if e.type == KEYDOWN and e.key == K_ESCAPE:  # Esc - управляющая клавиша паузы
+                    is_on_pause = 1 - is_on_pause
+                    for obj in obstacles:  # останавливаем всех монстров в зависимости от состояния
+                        if obj.__class__ == Monster:
+                            obj.stop(is_on_pause)
+
+            screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
+            if not is_on_pause:
+                hero.update(left, right, up, obstacles, coins, levels[current_level])  # передвижение
+                camera.update(hero)
+            for e in entities:
+                screen.blit(e.image, camera.apply(e))
+            if is_on_pause:
+                draw_pause(screen)
+
+            draw_score(screen, str(hero.total_scores))
+
+            if hero.exited(exits):
                 running = False
-            if e.type == KEYDOWN and e.key == K_UP:
-                up = True
-            if e.type == KEYUP and e.key == K_UP:
-                up = False
 
-            if e.type == KEYDOWN and e.key == K_LEFT:
-                left = True
-            if e.type == KEYDOWN and e.key == K_RIGHT:
-                right = True
-
-            if e.type == KEYUP and e.key == K_RIGHT:
-                right = False
-            if e.type == KEYUP and e.key == K_LEFT:
-                left = False
-
-            if e.type == KEYDOWN and e.key == K_ESCAPE:  # Esc - управляющая клавиша паузы
-                is_on_pause = 1 - is_on_pause
-                for obj in obstacles:  # останавливаем всех монстров в зависимости от состояния
-                    if obj.__class__ == Monster:
-                        obj.stop(is_on_pause)
-
-        screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
-        if not is_on_pause:
-            hero.update(left, right, up, obstacles, coins, levels[current_level])  # передвижение
-            camera.update(hero)
-        for e in entities:
-            screen.blit(e.image, camera.apply(e))
-        if is_on_pause:
-            draw_pause(screen)
-
-        draw_score(screen, str(hero.scores))
-
-        pygame.display.update()  # обновление и вывод всех изменений на экран
-
-    pygame.quit()
+            pygame.display.update()  # обновление и вывод всех изменений на экран
 
 
 if __name__ == "__main__":

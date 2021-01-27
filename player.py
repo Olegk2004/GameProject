@@ -31,7 +31,8 @@ class Player(sprite.Sprite):
         self.y_vel = 0  # скорость вертикального перемещения
         self.onGround = False  # На земле ли я?
         self.anim_count = 0  # переменная какой картинку в данный момент времени вставлять
-        self.scores = 0
+        self.level_scores = 0
+        self.total_scores = 0
 
     def update(self, left, right, up, platforms, coins, level):
         if self.anim_count + 1 >= 30:
@@ -89,16 +90,20 @@ class Player(sprite.Sprite):
 
         for monet in coins:
             if sprite.collide_rect(self, monet) and monet.is_activated():
-                self.scores += 100
+                self.level_scores += 100
+                self.total_scores += 100
                 monet.set_activated(False)  # убираем монеты
 
     def die(self, coins):
         time.wait(500)
         self.teleporting(self.startX, self.startY)  # перемещаемся в начальные координаты
-        self.scores = 0
+        self.level_scores = 0
         for monet in coins:  # монеты возвращаются на место
             monet.set_activated(True)
 
     def teleporting(self, go_x, go_y):
         self.rect.x = go_x
         self.rect.y = go_y
+
+    def exited(self, exits):
+        return any([sprite.collide_rect(self, ex) for ex in exits])
